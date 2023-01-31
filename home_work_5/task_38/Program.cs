@@ -30,8 +30,19 @@ void writeArray(double[] array)
 // Gets number from console
 int getNumberFromConsole()
 {
+    int number;
     Console.Write("Введите натуральное число --> ");
-    int number = Convert.ToInt32(Console.ReadLine());
+    try
+    {
+        number = Convert.ToInt32(Console.ReadLine());
+    }
+    catch
+    {
+        Console.Beep();
+        Console.WriteLine("Что-то пошло не так. Попробуйте ещё ;)");
+        number = getNumberFromConsole();
+    }
+    number = number > 0 ? number : getNumberFromConsole();
     return number;
 }
 //____________________________________________
@@ -42,10 +53,7 @@ double minElement(double[] array)
     double min = array[0];
     for (int i = 1; i < array.Length; i++)
     {
-        if (array[i] < min)
-        {
-            min = array[i];
-        }
+        min = array[i] < min ? array[i] : min;
     }
     return min;
 }
@@ -57,18 +65,14 @@ double maxElement(double[] array)
     double max = array[0];
     for (int i = 1; i < array.Length; i++)
     {
-        if (array[i] > max)
-        {
-            max = array[i];
-        }
+        max = array[i] > max ? array[i] : max;
     }
     return max;
 }
 //____________________________________________
 
-
 // Main
 int number = getNumberFromConsole();
 double[] array = fillArray(new double[number], -10, 11, 3);
 writeArray(array);
-Console.WriteLine($"Разница между максимальным и минимальным элементом = {maxElement(array) - minElement(array)}");
+Console.WriteLine($"Разница между максимальным и минимальным элементом = {maxElement(array) - minElement(array):f3}");
