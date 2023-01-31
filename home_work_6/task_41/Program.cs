@@ -10,12 +10,12 @@ string? str = Console.ReadLine();
 if (str != null)
 {
     string[] strArray = str.Split(); 
-    int[] numberArray = new int[strArray.Length];
     int countPositiv = 0;
-    for (int i = 0; i < numberArray.Length; i++)
+    int number;
+    for (int i = 0; i < strArray.Length; i++)
     {
-        numberArray[i] = Convert.ToInt32(strArray[i]);
-        countPositiv = numberArray[i] > 0 ? countPositiv + 1 : countPositiv;
+        number = Convert.ToInt32(strArray[i]);
+        countPositiv = number > 0 ? countPositiv + 1 : countPositiv;
     }
     Console.WriteLine($"Количество положительных чисел = {countPositiv}");
 }
