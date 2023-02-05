@@ -12,6 +12,7 @@ double GetRatioFromConsole(string name)
     Console.Write($"Введите коэффициент {name}--> ");
     return Convert.ToInt32(Console.ReadLine());
 }
+//____________________________________________
 
 // Main
 double k1 = GetRatioFromConsole("k1");
@@ -19,7 +20,11 @@ double b1 = GetRatioFromConsole("b1");
 double k2 = GetRatioFromConsole("k2");
 double b2 = GetRatioFromConsole("b2");
 
-if (k1 == k2)
+if (k1 == k2 & b1 == b2)
+{
+    Console.WriteLine("Линии \"совпадают\" и имеют бесконечное множество точек пересечения");
+}
+else if (k1 == k2)
 {
     Console.WriteLine("Задача не имеет решения. Линии параллельны");
 }
