@@ -8,17 +8,17 @@ m = 3, n = 2 -> A(m,n) = 29
 // Main
 int m = GetNumberFromConsole("m");
 int n = GetNumberFromConsole("n");
-Console.WriteLine($"Результат вычисления функции Аккермана A(m, n) = {anc(m, n)}");
+Console.WriteLine($"Результат вычисления функции Аккермана A(m, n) = {GetAckerman(m, n)}");
 Console.WriteLine("PS: Спасибо за уроки ))");
 
-// Gets result Ancerman function
-int anc(int m, int n)
+// Gets result Ackermann function
+int GetAckerman(int m, int n)
 {
     if (m == 0) return n + 1;
     else
     {
-        if ((m !=0) && (n == 0)) return anc(m - 1, 1);
-        else return anc(m - 1, anc(m, n - 1));
+        if ((m !=0) && (n == 0)) return GetAckerman(m - 1, 1);
+        else return GetAckerman(m - 1, GetAckerman(m, n - 1));
     }
 }
 
