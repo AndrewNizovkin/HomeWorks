@@ -19,7 +19,7 @@ my_vowels = {'а', 'е', 'ё', 'и', 'й', 'о', 'у', 'ы', 'э', 'ю', 'я'}
 
 def count_vowel(text):
     '''
-    Gets the number of vowels in the poem
+    Gets the number of vowels in the `text`
     
     '''
     return len([i for i in text if i in my_vowels])
