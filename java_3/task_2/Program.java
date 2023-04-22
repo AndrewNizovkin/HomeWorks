@@ -5,7 +5,8 @@ import java.util.Random;
 
 /**
  * Task_2
- * Пусть дан произвольный список целых чисел, удалить из него четные числа
+ * Задан целочисленный список ArrayList. Найти минимальное, максимальное и 
+ * среднее арифметическое из этого списка. Collections.max()
  */
 public class Program {
     public static void main(String[] args) {
