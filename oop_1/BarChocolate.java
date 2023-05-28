@@ -42,6 +42,7 @@ public class BarChocolate extends Product{
         return calories;
     }
 
+    @Override
     public String displayInfo() {
         return String.format("%s - %s - %.2f - Вес: %.2f Калории: %.1f Жиры: %.1f Белки: %.1f Углеводы: %.1f",
                 brand,
