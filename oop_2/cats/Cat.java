@@ -24,7 +24,7 @@ public class Cat {
      * @param plate plate with food
      */
     public void eat(Plate plate) {
-        if (plate.getFood() >= appetite) {
+        if (plate.getFood() >= appetite && !satiety) {
             plate.setFood(plate.getFood() - appetite);
             satiety = true;
         }
