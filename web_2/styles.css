@@ -1,0 +1,30 @@
+html {
+    font-size: 15px;
+    font-family: 'Roboto', sans-serif;
+    background-color: lightgray;
+}
+h1 {
+    text-align: center;
+    color: darkblue;
+}
+h2 {
+    color: blue;
+    text-align: center;
+}
+h3 {
+    color: darkgreen;
+    text-align: center;
+}
+.frontend {
+
+    text-indent: 35px;
+}
+.base {
+    text-indent: 35px;
+}
+.images {
+    float: left;
+    border: 2px solid #ccc;
+    padding: 6px;
+
+}
