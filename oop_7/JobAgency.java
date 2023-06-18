@@ -19,7 +19,7 @@ public class JobAgency implements Publisher {
     }
 
     @Override
-    public void sendOffer(Vacancy vacancy) {
+    public void sendOffer(VacancyModel vacancy) {
         for (Observer observer: observers) {
             observer.receiveOffer(vacancy);
         }

@@ -15,7 +15,7 @@ public class Manager implements Observer{
     }
 
     @Override
-    public void receiveOffer(Vacancy vacancy) {
+    public void receiveOffer(VacancyModel vacancy) {
         if (vacancy.getTypeVacancy() == TypeVacancy.MANAGER) {
             if (minSalary <= vacancy.getSalary()) {
                 System.out.printf("Менеджер %s (%f) >>> Мне нужна эта работа! [%s - %f] [%s]\n",

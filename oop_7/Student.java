@@ -15,7 +15,7 @@ public class Student implements Observer {
     }
 
     @Override
-    public void receiveOffer(Vacancy vacancy) {
+    public void receiveOffer(VacancyModel vacancy) {
         if (vacancy.getTypeVacancy() == TypeVacancy.STUDENT) {
             if (minSalary <= vacancy.getSalary()) {
                 System.out.printf("Студент %s (%f) >>> Мне нужна эта работа! [%s - %f] [%s]\n",

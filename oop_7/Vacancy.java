@@ -1,6 +1,6 @@
 package ru.geekbrains.lesson7.observer;
 
-public class Vacancy {
+public class Vacancy implements VacancyModel{
     private final TypeVacancy typeVacancy;
     private final String companyName;
     private final double salary;
@@ -11,14 +11,17 @@ public class Vacancy {
         this.typeVacancy = typeVacancy;
     }
 
+    @Override
     public String getCompanyName() {
         return companyName;
     }
 
+    @Override
     public double getSalary() {
         return salary;
     }
 
+    @Override
     public TypeVacancy getTypeVacancy() {
         return typeVacancy;
     }
