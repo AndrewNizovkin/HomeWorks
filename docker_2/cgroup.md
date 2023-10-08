@@ -99,6 +99,9 @@
 
 ---
 
+> Задание 2*: настроить автоматическую маршрутизацию между контейнерами. Адреса можно взять: 10.0.12.0/24 и 10.0.13.0/24. e.x. sudo lxc-create -n test123 -t ubuntu -f /usr/share/doc/lxc/examples/lxc-veth.conf (файл может лежать по другому путь, можно найти командой sudo find / -name lxc-veth.conf)
+
+
 `lxc-start con2 --logfile=HomeWork02/con2.log --logpriority=NOTICE `
 запустить контейнер с именем con2, назначить лог-файл, назначить уровень логирования 
 
