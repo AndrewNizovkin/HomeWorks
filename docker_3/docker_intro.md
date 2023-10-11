@@ -65,3 +65,28 @@ SHOW TABLES;
 docker stop $(docker ps -aq)
 docker system prune -af
 ```
+
+---
+
+Ищем на [hub.docker.com](https://hub.docker.com/) postgresql и читаем документацию.
+
+```
+mkdir my_postgres
+docker run --name my_postgres -e POSTGRES_PASSWORD=0208 -d postgres:11-alpine
+docker ps
+```
+
+![scr_6](./images/scr_6.jpg)
+
+Заходим в контейнер из в базу данных:
+
+```
+docker exec -it <id> bash
+psql 
+
+```
+Ищем на [hub.docker.com](https://hub.docker.com/) adminer и читаем документацию.
+```
+docker run --link my_postgres:db -p 8081:8080 adminer
+```
+Смотрим на web-интерфейс adminer через localhost:8081
