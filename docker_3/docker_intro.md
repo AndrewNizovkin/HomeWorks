@@ -19,7 +19,7 @@
 
 `docker ps`
 
-![scr_1](/images/scr_1.jpg)
+![scr_1](./images/scr_1.jpg)
 
 Заходим в контейнер из в базу данных:
 
@@ -36,14 +36,14 @@ CREATE TABLE test1.table (id INT, volume CHAR);
 SHOW DATABASES;
 ```
 
-![scr_2](/images/scr_2.jpg)
+![scr_2](./images/scr_2.jpg)
 
 ```
 USE test1;
 SHOW TABLES;
 ```
 
-![scr_3](/images/scr_3.jpg)
+![scr_3](./images/scr_3.jpg)
 
 ---
 
@@ -53,11 +53,11 @@ SHOW TABLES;
 
 `docker ps`
 
-![scr_4](/images/scr_4.jpg)
+![scr_4](./images/scr_4.jpg)
 
 В браузере заходим на localhost:8081
 
-![scr_5](/images/scr_5.jpg)
+![scr_5](./images/scr_5.jpg)
 
 Останавливаем все контейнеры и очищаем систему от всего ненужного:
 
