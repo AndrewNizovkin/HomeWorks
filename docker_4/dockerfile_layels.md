@@ -15,23 +15,21 @@ public class Program {
 }
 
 ```
-
 В этой же папке создаём файл `Dockerfile`:
 
 ```
-FROM openjdk:11
-RUN apt update
+FROM debian:unstable-slim
+RUN apt update && apt install openjdk-20-jdk -y
 WORKDIR /home/andrew/docker/docker_4
 COPY Program.java .
 RUN javac Program.java
 CMD ["java", "Program"]
-
 ```
 
 Создаём контейнер:
 
 ```
-docker build -t myapp-container
+docker build -t myapp .
 docker images
 ```
 
@@ -39,7 +37,7 @@ docker images
 
 Запускаем контейнер:
 
-`docker run myapp-container`
+`docker run myapp`
 
 ![scr_2](./images/scr_2.jpg)
 
