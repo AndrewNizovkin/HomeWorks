@@ -31,7 +31,7 @@ services:
     ports:
       - 6080:8080
     networks:
-      - app-networkвщслук
+      - app-network
     deploy:
       mode: replicated
       replicas: 1
