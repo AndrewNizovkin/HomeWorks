@@ -19,7 +19,37 @@ public class Camera {
         this.angle3D = angle3D;
     }
 
+    /**
+     * Gets camera location
+     * @return Point3D
+     */
+    public Point3D getLocation() {
+        return location;
+    }
 
+    /**
+     * Gets camera direction
+     * @return Angle3D
+     */
+    public Angle3D getAngle3D() {
+        return angle3D;
+    }
+
+    /**
+     * Sets new camera position
+     * @param location Point3D
+     */
+    public void setLocation(Point3D location) {
+        this.location = location;
+    }
+
+    /**
+     * Sets new camera direction
+     * @param angle3D Angle3D
+     */
+    public void setAngle3D(Angle3D angle3D) {
+        this.angle3D = angle3D;
+    }
 
     /**
      * Changes camera direction
