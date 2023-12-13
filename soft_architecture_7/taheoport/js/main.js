@@ -23,20 +23,8 @@ const futer = '<p>Copyright © Низовкин А.В. 2000г.</p>\
 
 document.getElementById("demo").innerHTML = routes[0];
 document.getElementById("myfooter").innerHTML = futer;
+
 function reloadArticle(choice) {
-    switch(choice) {
-        case 0:
-            document.getElementById("demo").innerHTML = routes[0];
-        break;
-        case 1:
-            document.getElementById("demo").innerHTML = routes[1];
-        break;
-        case 2:
-            document.getElementById("demo").innerHTML = routes[2];
-        break;
-        case 3:
-            document.getElementById("demo").innerHTML = routes[3];
-        break;
-    }
+    document.getElementById("demo").innerHTML = routes[choice];
 
 }
