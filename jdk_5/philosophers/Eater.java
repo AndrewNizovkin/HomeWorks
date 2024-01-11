@@ -26,8 +26,8 @@ public class Eater implements Runnable{
         while (count <= 3) {
             takeForks();
             feed();
-            System.out.println(name + ": \"Ну вот поели, можно и поспа... подумать " + speed + "мс\"");
             returnForks();
+            System.out.println(name + ": \"Ну вот поели, можно и поспа... подумать " + speed + "мс\"");
             try {
                 Thread.sleep(speed);
             } catch (InterruptedException e) {
