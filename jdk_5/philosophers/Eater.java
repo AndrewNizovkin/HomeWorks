@@ -66,7 +66,7 @@ public class Eater implements Runnable{
      * Бронирует вилки, если обе свободны
      * @return результат
      */
-    synchronized boolean upForks() {
+    private boolean upForks() {
         if (!left.get() && !right.get()) {
             left.set(true);
             right.set(true);
@@ -92,7 +92,7 @@ public class Eater implements Runnable{
     /**
      * Освобождает вилки
      */
-    synchronized void downForks() {
+    private void downForks() {
         left.set(false);
         right.set(false);
     }
