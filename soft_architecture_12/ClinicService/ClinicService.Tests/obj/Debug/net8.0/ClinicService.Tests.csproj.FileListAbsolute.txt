@@ -1,0 +1,6 @@
+D:\GeekBrains\SoftwareArchitecture\lesson11\ClinicService\ClinicService.Tests\bin\Debug\net8.0\CoverletSourceRootsMapping_ClinicService.Tests
+D:\GeekBrains\SoftwareArchitecture\lesson11\ClinicService\ClinicService.Tests\obj\Debug\net8.0\ClinicService.Tests.csproj.AssemblyReference.cache
+D:\GeekBrains\SoftwareArchitecture\lesson11\ClinicService\ClinicService.Tests\obj\Debug\net8.0\ClinicService.Tests.GeneratedMSBuildEditorConfig.editorconfig
+D:\GeekBrains\SoftwareArchitecture\lesson11\ClinicService\ClinicService.Tests\obj\Debug\net8.0\ClinicService.Tests.AssemblyInfoInputs.cache
+D:\GeekBrains\SoftwareArchitecture\lesson11\ClinicService\ClinicService.Tests\obj\Debug\net8.0\ClinicService.Tests.AssemblyInfo.cs
+D:\GeekBrains\SoftwareArchitecture\lesson11\ClinicService\ClinicService.Tests\obj\Debug\net8.0\ClinicService.Tests.csproj.CoreCompileInputs.cache
