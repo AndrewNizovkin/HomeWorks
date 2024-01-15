@@ -108,7 +108,7 @@ namespace ClinicService.Tests
 
 
         [Theory]
-        [MemberData(nameof(CorrectCreateClientData))]
+        [MemberData(nameof(CorrectUpdateClientData))]
         public void EditClientTest(
             int clientId, DateTime birthday, string document, string surName, string firstName, string patronymic)
         {
