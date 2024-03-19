@@ -77,8 +77,8 @@ public class ReaderController {
      */
     @PostMapping
     public ResponseEntity<?> createReader(@RequestBody ReaderRequest readerRequest) {
-        Reader reader = new Reader(readerRequest.getName());
-        return new ResponseEntity<>(readerService.createReader(reader), HttpStatus.CREATED);
+//        Reader reader = new Reader(readerRequest.getName());
+        return new ResponseEntity<>(readerService.createReader(readerRequest), HttpStatus.CREATED);
     }
 
 

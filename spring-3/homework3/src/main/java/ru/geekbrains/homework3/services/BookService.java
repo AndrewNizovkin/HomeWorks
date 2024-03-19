@@ -3,6 +3,7 @@ package ru.geekbrains.homework3.services;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import ru.geekbrains.homework3.controllers.BookRequest;
 import ru.geekbrains.homework3.models.Book;
 import ru.geekbrains.homework3.repositories.BookRepository;
 
@@ -46,10 +47,11 @@ public class BookService {
 
     /**
      * Adds book to repository
-     * @param book
+     * @param bookRequest
      * @return
      */
-    public Book createBook(Book book) {
+    public Book createBook(BookRequest bookRequest) {
+        Book book = new Book(bookRequest.getName());
         bookRepository.addBook(book);
         return book;
     }

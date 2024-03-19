@@ -3,6 +3,7 @@ package ru.geekbrains.homework3.services;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import ru.geekbrains.homework3.controllers.ReaderRequest;
 import ru.geekbrains.homework3.models.Book;
 import ru.geekbrains.homework3.models.Issue;
 import ru.geekbrains.homework3.models.Reader;
@@ -53,7 +54,8 @@ public class ReaderService {
      * @param
      * @return
      */
-    public Reader createReader(Reader reader) {
+    public Reader createReader(ReaderRequest readerRequest) {
+        Reader reader = new Reader(readerRequest.getName());
         readerRepository.addReader(reader);
         return reader;
     }
