@@ -3,8 +3,8 @@ package ru.geekbrains.homework3.services;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import ru.geekbrains.homework3.controllers.ReaderRequest;
-import ru.geekbrains.homework3.models.Book;
+import ru.geekbrains.homework3.dto.ReaderRequest;
+import ru.geekbrains.homework3.mappers.ReaderMapper;
 import ru.geekbrains.homework3.models.Issue;
 import ru.geekbrains.homework3.models.Reader;
 import ru.geekbrains.homework3.repositories.IssueRepository;
@@ -55,7 +55,7 @@ public class ReaderService {
      * @return
      */
     public Reader createReader(ReaderRequest readerRequest) {
-        Reader reader = new Reader(readerRequest.getName());
+        Reader reader = ReaderMapper.toReader(readerRequest);
         readerRepository.addReader(reader);
         return reader;
     }
@@ -73,7 +73,7 @@ public class ReaderService {
 
         List<Issue> issues = isuueRepository.getAll()
                 .stream()
-                .filter(issue -> issue.getIdReader() == readerId)
+                .filter(issue -> issue.getIdReader() == readerId && issue.getReturned_at() == null)
                 .collect(Collectors.toList());
 
         if (issues.isEmpty()) {
@@ -81,10 +81,7 @@ public class ReaderService {
             throw new NoSuchElementException("Не выдано книг читателю с id=" + readerId);
         }
 
-
-
         return issues;
     }
-
 
 }

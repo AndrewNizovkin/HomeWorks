@@ -1,4 +1,4 @@
-package ru.geekbrains.homework3.controllers;
+package ru.geekbrains.homework3.dto;
 
 import lombok.Data;
 

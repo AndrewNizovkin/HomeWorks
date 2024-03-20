@@ -6,7 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.geekbrains.homework3.models.AppError;
+import org.springframework.web.server.ResponseStatusException;
+import ru.geekbrains.homework3.dto.IssueRequest;
 import ru.geekbrains.homework3.models.Issue;
 import ru.geekbrains.homework3.services.IssueService;
 
@@ -18,8 +19,7 @@ import java.util.NoSuchElementException;
 @RequestMapping("issue")
 @RequiredArgsConstructor
 public class IssueController {
-//    @Autowired
-    IssueService issueService;
+    private IssueService issueService;
 
     @Autowired
     public IssueController(IssueService issueService) {
@@ -32,7 +32,7 @@ public class IssueController {
      * @return
      */
     @PostMapping
-    public ResponseEntity<?> issueBook(@RequestBody IssueRequest issueRequest) {
+    public ResponseEntity<Issue> issueBook(@RequestBody IssueRequest issueRequest) {
         log.info("Поступил запрос на выдачу: readerId={}, bookId={}",
                 issueRequest.getReaderId(),
                 issueRequest.getBookId());
@@ -40,13 +40,9 @@ public class IssueController {
         try {
             return new ResponseEntity<>(issueService.createIssue(issueRequest), HttpStatus.CREATED);
         } catch (NoSuchElementException e) {
-            return new ResponseEntity<>(new AppError(HttpStatus.NOT_FOUND.value(),
-                    e.getMessage()),
-                    HttpStatus.NOT_FOUND);
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
         } catch (NoPermissionException e) {
-            return new ResponseEntity<>(new AppError(HttpStatus.CONFLICT.value(),
-                    e.getMessage()),
-                    HttpStatus.CONFLICT);
+            throw new ResponseStatusException(HttpStatus.CONFLICT, e.getMessage());
 
         }
     }
@@ -57,13 +53,25 @@ public class IssueController {
      * @return
      */
     @GetMapping("{id}")
-    public ResponseEntity<?> getById(@PathVariable long id) {
+    public ResponseEntity<Issue> getById(@PathVariable long id) {
         try {
             return new ResponseEntity<>(issueService.getById(id), HttpStatus.OK);
         } catch (NoSuchElementException e) {
-            return new ResponseEntity<>(new AppError(HttpStatus.NOT_FOUND.value(),
-                    e.getMessage())
-                    ,HttpStatus.NOT_FOUND);
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
+        }
+    }
+
+    /**
+     * Closes issue by id
+     * @param issueId
+     * @return
+     */
+    @PutMapping("{issueId}")
+    public ResponseEntity<Issue> closeById(@PathVariable long issueId) {
+        try {
+            return new ResponseEntity<>(issueService.closeIssue(issueId), HttpStatus.OK);
+        } catch (NoSuchElementException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
         }
     }
 

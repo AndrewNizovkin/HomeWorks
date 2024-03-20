@@ -17,6 +17,14 @@ public class ReaderRepository {
     }
 
     /**
+     * Gets all readers
+     * @return List of Reader instance
+     */
+    public List<Reader> getAll() {
+        return List.copyOf(readers);
+    }
+
+    /**
      * Get reader from reader list by id
      * @param id
      * @return

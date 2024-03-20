@@ -3,11 +3,10 @@ package ru.geekbrains.homework3.controllers;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.geekbrains.homework3.models.AppError;
-import ru.geekbrains.homework3.models.Book;
+import org.springframework.web.server.ResponseStatusException;
+import ru.geekbrains.homework3.dto.ReaderRequest;
 import ru.geekbrains.homework3.models.Issue;
 import ru.geekbrains.homework3.models.Reader;
-import ru.geekbrains.homework3.services.BookService;
 import ru.geekbrains.homework3.services.ReaderService;
 
 import java.util.List;
@@ -28,13 +27,11 @@ public class ReaderController {
      * @return
      */
     @GetMapping("{id}")
-    public ResponseEntity<?> getById(@PathVariable long id) {
+    public ResponseEntity<Reader> getById(@PathVariable long id) {
         try {
             return new ResponseEntity<>(readerService.getById(id), HttpStatus.OK);
         } catch (NoSuchElementException e) {
-            return new ResponseEntity<>(new AppError(HttpStatus.NOT_FOUND.value(),
-                    e.getMessage())
-                    ,HttpStatus.NOT_FOUND);
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
         }
     }
 
@@ -44,13 +41,11 @@ public class ReaderController {
      * @return
      */
     @GetMapping("/{readerId}/issue")
-    public ResponseEntity<?> getIssuesByReaderId(@PathVariable long readerId) {
+    public ResponseEntity<List<Issue>> getIssuesByReaderId(@PathVariable long readerId) {
         try {
             return new ResponseEntity<>(readerService.getIssues(readerId), HttpStatus.OK);
         } catch (NoSuchElementException e) {
-            return new ResponseEntity<>(new AppError(HttpStatus.NOT_FOUND.value(),
-                    e.getMessage()),
-                    HttpStatus.NOT_FOUND);
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
         }
     }
 
@@ -60,13 +55,11 @@ public class ReaderController {
      * @return
      */
     @DeleteMapping("{id}")
-    public ResponseEntity<?> removeReaderById(@PathVariable long id) {
+    public ResponseEntity<Reader> removeReaderById(@PathVariable long id) {
         try {
             return new ResponseEntity<>(readerService.removeById(id), HttpStatus.OK);
         } catch (NoSuchElementException e) {
-            return new ResponseEntity<>(new AppError(HttpStatus.NOT_FOUND.value(),
-                    e.getMessage()),
-                    HttpStatus.NOT_FOUND);
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
         }
     }
 
@@ -76,8 +69,7 @@ public class ReaderController {
      * @return
      */
     @PostMapping
-    public ResponseEntity<?> createReader(@RequestBody ReaderRequest readerRequest) {
-//        Reader reader = new Reader(readerRequest.getName());
+    public ResponseEntity<Reader> createReader(@RequestBody ReaderRequest readerRequest) {
         return new ResponseEntity<>(readerService.createReader(readerRequest), HttpStatus.CREATED);
     }
 

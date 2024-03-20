@@ -3,12 +3,12 @@ package ru.geekbrains.homework3.services;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import ru.geekbrains.homework3.controllers.BookRequest;
+import ru.geekbrains.homework3.dto.BookRequest;
+import ru.geekbrains.homework3.mappers.BookMapper;
 import ru.geekbrains.homework3.models.Book;
 import ru.geekbrains.homework3.repositories.BookRepository;
 
-import java.util.Collection;
-import java.util.Collections;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 @Slf4j
@@ -18,9 +18,17 @@ public class BookService {
     private final BookRepository bookRepository;
 
     /**
+     * Get all books
+     * @return List Book instances
+     */
+    public List<Book> getAll() {
+        return bookRepository.getAll();
+    }
+
+    /**
      * Gets book by id
-     * @param id
-     * @return
+     * @param id long id
+     * @return Book instance
      */
     public Book getById(long id) {
         Book book = bookRepository.getById(id);
@@ -34,7 +42,7 @@ public class BookService {
 
     /**
      * Removes book with id
-     * @param id
+     * @param id long id
      */
     public Book removeById(long id) {
         Book book = bookRepository.getById(id);
@@ -47,11 +55,11 @@ public class BookService {
 
     /**
      * Adds book to repository
-     * @param bookRequest
-     * @return
+     * @param bookRequest BookRequest instance
+     * @return Book instance
      */
     public Book createBook(BookRequest bookRequest) {
-        Book book = new Book(bookRequest.getName());
+        Book book = BookMapper.toBook(bookRequest);
         bookRepository.addBook(book);
         return book;
     }

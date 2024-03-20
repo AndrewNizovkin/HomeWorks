@@ -3,9 +3,9 @@ package ru.geekbrains.homework3.controllers;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.geekbrains.homework3.models.AppError;
+import org.springframework.web.server.ResponseStatusException;
+import ru.geekbrains.homework3.dto.BookRequest;
 import ru.geekbrains.homework3.models.Book;
-import ru.geekbrains.homework3.repositories.BookRepository;
 import ru.geekbrains.homework3.services.BookService;
 
 import java.util.NoSuchElementException;
@@ -29,9 +29,7 @@ public class BookController {
         try {
             return new ResponseEntity<>(bookService.getById(id), HttpStatus.OK);
         } catch (NoSuchElementException e) {
-            return new ResponseEntity<>(new AppError(HttpStatus.NOT_FOUND.value(),
-                    e.getMessage())
-                    ,HttpStatus.NOT_FOUND);
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
         }
     }
 
@@ -41,13 +39,11 @@ public class BookController {
      * @return
      */
     @DeleteMapping("{id}")
-    public ResponseEntity<?> removeBookById(@PathVariable long id) {
+    public ResponseEntity<Book> removeBookById(@PathVariable long id) {
         try {
             return new ResponseEntity<>(bookService.removeById(id), HttpStatus.OK);
         } catch (NoSuchElementException e) {
-            return new ResponseEntity<>(new AppError(HttpStatus.NOT_FOUND.value(),
-                    e.getMessage()),
-                    HttpStatus.NOT_FOUND);
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
         }
     }
 
@@ -57,8 +53,7 @@ public class BookController {
      * @return
      */
     @PostMapping
-    public ResponseEntity<?> createBook(@RequestBody BookRequest bookRequest) {
-//        Book book = new Book(bookRequest.getName());
+    public ResponseEntity<Book> createBook(@RequestBody BookRequest bookRequest) {
         return new ResponseEntity<>(bookService.createBook(bookRequest), HttpStatus.CREATED);
     }
 }
