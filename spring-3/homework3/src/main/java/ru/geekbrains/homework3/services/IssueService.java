@@ -1,8 +1,9 @@
 package ru.geekbrains.homework3.services;
 
 import lombok.RequiredArgsConstructor;
-import lombok.Value;
+//import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import ru.geekbrains.homework3.dto.IssueRequest;
 import ru.geekbrains.homework3.mappers.IssueMapper;
@@ -19,8 +20,8 @@ import java.util.NoSuchElementException;
 @RequiredArgsConstructor
 @Service
 public class IssueService {
-//    @Value("${application.max-count-book:1}")
-    private int value = 3;
+    @Value("${application.max-count-book:1}")
+    private int value ;
 
     private final BookRepository bookRepository;
     private final IssueRepository isuueRepository;
