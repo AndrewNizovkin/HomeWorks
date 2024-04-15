@@ -1,0 +1,26 @@
+server:
+  error:
+    include-message: ALWAYS
+application:
+  max-count-book: 3
+spring:
+  application:
+    name: homework5
+  datasource:
+    url: jdbc:h2:mem:test
+    username: andrew
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+management:
+  endpoint:
+    env:
+      show-values: ALWAYS
+  endpoints:
+    web:
+      exposure:
+        include: env, prometheus, health, info, metrics
+
