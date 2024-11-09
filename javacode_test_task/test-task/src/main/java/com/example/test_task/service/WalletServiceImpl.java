@@ -16,11 +16,13 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class WalletServeseImpl implements WalletService{
+public class WalletServiceImpl implements WalletService{
 
     private final WalletRepository walletRepository;
     private final WalletMapper walletMapper;
+    private final WalletBalanceHandler walletBalanceHandler;
     private static final String NOT_FOUND_WALLET_MESSAGE = "Couldn't find the wallet with the ID: ";
+
     /**
      * Changes amount of wallet
      *
@@ -29,7 +31,17 @@ public class WalletServeseImpl implements WalletService{
      */
     @Override
     public WalletResponse changeWallet(WalletRequest walletRequest) {
-        return null;
+        switch (walletRequest.getOperationType()) {
+            case "DEPOSIT" -> {
+                return walletBalanceHandler.deposit(walletRequest);
+            }
+            case "WITHDRAW" -> {
+                return walletBalanceHandler.withdraw(walletRequest);
+            }
+            default -> {
+                throw new RuntimeException("Unknown operator type");
+            }
+        }
     }
 
     /**
@@ -72,6 +84,5 @@ public class WalletServeseImpl implements WalletService{
             wallet.setBalance(random.nextInt(10) * 1000);
             walletRepository.save(wallet);
         }
-
     }
 }
