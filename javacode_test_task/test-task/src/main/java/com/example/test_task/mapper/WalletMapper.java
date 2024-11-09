@@ -13,13 +13,6 @@ import java.util.List;
 public interface WalletMapper {
 
     /**
-     * Converts instance of WalletRequest to instance Wallet
-     * @param walletRequest walletRequest
-     * @return wallet
-     */
-    Wallet toWallet(WalletRequest walletRequest);
-
-    /**
      * Converts instance of Wallet to instance WalletResponse
      * @param wallet wallet
      * @return walletResponse

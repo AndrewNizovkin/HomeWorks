@@ -12,16 +12,6 @@ import java.util.List;
 public class WalletMapperImpl implements WalletMapper{
 
     /**
-     * Converts instance of WalletRequest to instance Wallet
-     * @param walletRequest walletRequest
-     * @return wallet
-     */
-    @Override
-    public Wallet toWallet(WalletRequest walletRequest) {
-        return null;
-    }
-
-    /**
      * Converts instance of Wallet to instance WalletResponse
      * @param wallet wallet
      * @return walletResponse

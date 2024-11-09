@@ -39,7 +39,7 @@ public class WalletServiceImpl implements WalletService{
                 return walletBalanceHandler.withdraw(walletRequest);
             }
             default -> {
-                throw new RuntimeException("Unknown operator type");
+                throw new RuntimeException("Unknown operation type");
             }
         }
     }
