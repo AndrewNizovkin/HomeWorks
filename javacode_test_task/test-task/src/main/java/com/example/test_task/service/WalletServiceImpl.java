@@ -31,6 +31,10 @@ public class WalletServiceImpl implements WalletService{
      */
     @Override
     public WalletResponse changeWallet(WalletRequest walletRequest) {
+        Wallet wallet = walletRepository.findById(walletRequest.getWalletId()).orElse(null);
+        if (wallet == null) {
+            throw new RuntimeException(NOT_FOUND_WALLET_MESSAGE + walletRequest.getWalletId());
+        }
         switch (walletRequest.getOperationType()) {
             case "DEPOSIT" -> {
                 return walletBalanceHandler.deposit(walletRequest);

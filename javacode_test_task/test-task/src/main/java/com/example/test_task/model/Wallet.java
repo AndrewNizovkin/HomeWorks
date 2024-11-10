@@ -22,4 +22,6 @@ public class Wallet {
 
     @Column(name = "balance")
     private long balance;
+
+
 }

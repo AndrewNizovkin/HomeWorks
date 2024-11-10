@@ -5,9 +5,10 @@ import com.example.test_task.dto.WalletResponse;
 import com.example.test_task.mapper.WalletMapper;
 import com.example.test_task.model.Wallet;
 import com.example.test_task.repository.WalletRepository;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.UUID;
 
@@ -31,7 +32,7 @@ public class WalletBalanceHandlerImpl implements WalletBalanceHandler{
      * @return walletResponse
      */
     @Override
-    @Transactional
+    @Transactional(isolation = Isolation.REPEATABLE_READ)
     public WalletResponse deposit(WalletRequest walletRequest) {
         UUID walletId = walletRequest.getWalletId();
         Wallet wallet = walletRepository.findById(walletId).orElse(null);
@@ -50,7 +51,7 @@ public class WalletBalanceHandlerImpl implements WalletBalanceHandler{
      * @return walletResponse
      */
     @Override
-    @Transactional
+    @Transactional(isolation = Isolation.REPEATABLE_READ)
     public WalletResponse withdraw(WalletRequest walletRequest) {
         UUID walletId = walletRequest.getWalletId();
         Wallet wallet = walletRepository.findById(walletId).orElse(null);

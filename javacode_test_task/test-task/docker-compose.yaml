@@ -1,0 +1,27 @@
+version: '3.9'
+
+services:
+
+  db:
+    image: postgres:alpine3.19
+    container_name: postgres_container
+    restart: unless-stopped
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: tester
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: walletsdb
+#    networks:
+#      - app-network
+#
+#  myapp:
+#    image: myapp
+#    container_name: myapp_container
+#    ports:
+#      - 8080:8080
+#    networks:
+#      - app-network
+#networks:
+#  app-network:
+#    driver: bridge

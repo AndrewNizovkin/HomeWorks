@@ -81,14 +81,14 @@ class WalletBalanceHandlerImplTest {
     })
     void withdrawTest(long balance, long amount) {
         UUID uuid = UUID.randomUUID();
-        Wallet walletBeforeDeposit = new Wallet();
-        walletBeforeDeposit.setId(uuid);
-        walletBeforeDeposit.setBalance(balance);
-        Wallet walletAfterDeposit = new Wallet();
-        walletAfterDeposit.setId(uuid);
-        walletAfterDeposit.setBalance(balance - amount);
-        Mockito.when(walletRepository.findById(Mockito.any(UUID.class))).thenReturn(Optional.of(walletBeforeDeposit));
-        Mockito.when(walletRepository.save(Mockito.any(Wallet.class))).thenReturn(walletAfterDeposit);
+        Wallet walletBeforeWithdraw = new Wallet();
+        walletBeforeWithdraw.setId(uuid);
+        walletBeforeWithdraw.setBalance(balance);
+        Wallet walletAfterWithdraw = new Wallet();
+        walletAfterWithdraw.setId(uuid);
+        walletAfterWithdraw.setBalance(balance - amount);
+        Mockito.when(walletRepository.findById(Mockito.any(UUID.class))).thenReturn(Optional.of(walletBeforeWithdraw));
+        Mockito.when(walletRepository.save(Mockito.any(Wallet.class))).thenReturn(walletAfterWithdraw);
         WalletRequest walletRequest = new WalletRequest();
         walletRequest.setWalletId(uuid);
         walletRequest.setAmount(amount);
@@ -98,7 +98,7 @@ class WalletBalanceHandlerImplTest {
 
         assertNotNull(walletResponseActual);
         assertEquals(uuid, walletResponseActual.getWalletId());
-        assertEquals(walletAfterDeposit.getBalance(), walletResponseActual.getBalance());
+        assertEquals(walletAfterWithdraw.getBalance(), walletResponseActual.getBalance());
     }
 
     @Test
