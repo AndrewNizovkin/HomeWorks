@@ -16,7 +16,7 @@ services:
 #      - app-network
 #
 #  myapp:
-#    image: myapp
+#    image: test-task:0.0.1
 #    container_name: myapp_container
 #    ports:
 #      - 8080:8080
