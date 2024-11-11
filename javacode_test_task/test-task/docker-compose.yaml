@@ -12,16 +12,16 @@ services:
       POSTGRES_USER: tester
       POSTGRES_PASSWORD: 1234
       POSTGRES_DB: walletsdb
-#    networks:
-#      - app-network
-#
-#  myapp:
-#    image: test-task:0.0.1
-#    container_name: myapp_container
-#    ports:
-#      - 8080:8080
-#    networks:
-#      - app-network
-#networks:
-#  app-network:
-#    driver: bridge
+    networks:
+      - app-network
+
+  myapp:
+    build: ./
+    container_name: myapp_container
+    ports:
+      - 8080:8080
+    networks:
+      - app-network
+networks:
+  app-network:
+    driver: bridge
