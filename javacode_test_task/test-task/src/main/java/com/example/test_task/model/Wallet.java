@@ -21,7 +21,7 @@ public class Wallet {
     private UUID id;
 
     @Column(name = "balance")
-    private long balance;
+    private volatile long balance;
 
 
 }
